@@ -1,77 +1,80 @@
 <template>
-	<div class="card">
-		<div class="card__banner">
-			<img src="../../assets/images/malacate_cate.png" :alt="titulo" />
-			<h3>{{ titulo }}</h3>
+	<div class="card" :class="{ 'card--reverse': reverse }">
+		<div class="card__imagen">
+			<img src="@/assets/images/bomba.png" :alt="titulo" />
 		</div>
 		<div class="card__content">
+			<h2>{{ titulo }}</h2>
 			<p>{{ descripcion }}</p>
-			<base-button to="/productos"> Mas información </base-button>
+			<base-button link to="/productos">
+				Mas información <ArrowRightIcon class="icon" />
+			</base-button>
 		</div>
 	</div>
 </template>
 
-<script>
-export default {
-	props: {
-		titulo: {
-			type: String,
-			required: true,
-		},
-		descripcion: {
-			type: String,
-			required: true,
-		},
-		imagen: {
-			type: String,
-			required: false,
-		},
+<script setup>
+import { ArrowRightIcon } from "lucide-vue-next";
+const props = defineProps({
+	titulo: {
+		type: String,
+		required: true,
 	},
-};
+	descripcion: {
+		type: String,
+		required: true,
+	},
+	imagen: {
+		type: String,
+		required: false,
+	},
+	reverse: {
+		type: Boolean,
+		required: false,
+		default: false,
+	},
+});
 </script>
 
 <style lang="scss" scoped>
 .card {
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	border-radius: 12px;
-	margin: 2rem 0;
-	// background-color: $blanco;
+	gap: 2rem;
+	margin: 2rem;
 	padding: 1rem;
-	// box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 
-	&__banner {
-		position: relative;
-
+	&__imagen {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex:1;
+	
 		img {
-			object-fit: cover;
-			width: 100%;
+			width: 80%;
 			height: 100%;
-			border-radius: 0.625rem;
-		}
-
-		h3 {
-			position: absolute;
-			bottom: 4rem;
-			color: $blanco;
-			font-size: 2.25rem;
-			left: 50%;
-			transform: translate(-50%, 0);
 		}
 	}
 }
 
-.card__content {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
+.card--reverse {
+	flex-direction: row-reverse;
+}
 
+
+.card__content {
+	flex: 1;
+	h2 {
+		color: $azul-claro;
+		font-size: 2.5rem;
+	}
 	p {
+		color: $gris-oscuro;
 		margin: 1rem 0;
 	}
+}
+
+.icon {
+	width: 20px;
+	height: 20px;
 }
 </style>

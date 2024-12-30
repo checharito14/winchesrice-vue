@@ -3,7 +3,7 @@
 		<section class="footer-izquierda">
 			<h3>Winches Rice</h3>
 			<ul>
-				<li><router-link to="/">Inicio</router-link></li>
+				<li><router-link to="/home">Inicio</router-link></li>
 				<span>|</span>
 				<li><router-link to="/historia">Historia</router-link></li>
 				<span>|</span>

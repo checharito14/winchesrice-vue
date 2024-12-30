@@ -12,32 +12,27 @@
 			<ProductoCard
 				titulo="Malacates"
 				descripcion="Malacates hidráulicos para la pesca, minería, construcción y agricultura"
-				imagen="polea.gif"
 			/>
 			<ProductoCard
-				:titulo="'Bombas'"
-				:descripcion="`Se utilizan con excelentes resultados en el sistema de enfriamiento de la máquina.
+				titulo="Bombas"
+				descripcion="Se utilizan con excelentes resultados en el sistema de enfriamiento de la máquina.
                             Para circular agua en los condensadores de refrigeración
-                            Para agitar la salmuera en las tinas de precongelación.`"
+                            Para agitar la salmuera en las tinas de precongelación."
+				reverse
 			/>
 			<ProductoCard
-				:titulo="'Poleas'"
-				:descripcion="`Construidas totalmente en acero fundido, con baleros de rodillos cónicos. 
+				titulo="Poleas"
+				descripcion="Construidas totalmente en acero fundido, con baleros de rodillos cónicos. 
 								Cáncamo de acero fundido. 
 								Tornillería de acero de alta resistencia, sumamente fuerte y robusta
-								.Económica y eficiente`"
+								.Económica y eficiente"
 			/>
 		</div>
 	</section>
 </template>
 
-<script>
+<script setup>
 import ProductoCard from "../productos/ProductoCard.vue";
-export default {
-	components: {
-		ProductoCard,
-	},
-};
 </script>
 
 <style scoped lang="scss">
@@ -47,6 +42,7 @@ export default {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin: 1.5rem;
 
 	&__text {
 		font-weight: 400;
@@ -57,10 +53,9 @@ export default {
 	}
 
 	&__cards {
-		max-width: 80%;
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-gap: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 4rem;
 	}
 }
 </style>

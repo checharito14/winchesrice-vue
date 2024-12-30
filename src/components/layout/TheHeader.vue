@@ -5,7 +5,7 @@
 				><img src="../../assets/logo.rice.png" alt="Logo winches rice"
 			/></router-link>
 			<ul>
-				<li><router-link to="/">Inicio</router-link></li>
+				<li><router-link to="/home">Inicio</router-link></li>
 				<li><router-link to="/historia">Historia</router-link></li>
 				<li><router-link to="/productos">Productos</router-link></li>
 				<li><router-link to="/contacto">Contacto</router-link></li>
@@ -52,6 +52,7 @@ a:active,
 a.router-link-active {
 	color: #ffbc0e;
 }
+
 
 ul {
 	list-style: none;
