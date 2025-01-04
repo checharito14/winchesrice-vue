@@ -12,10 +12,11 @@ import Productos from "../components/main/Productos.vue";
 import Contacto from "../components/main/Contacto.vue";
 </script>
 
-<style>
+<style scoped lang="scss">
 .home-page {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+	
 }
 </style>

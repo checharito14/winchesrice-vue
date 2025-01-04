@@ -11,8 +11,15 @@ const router = createRouter({
         { path: "/home", component: HomePage },
         { path: "/historia", component: HistoriaPage },
         { path: "/contacto", component: ContactoPage },
-        { path: "/productos", component: ProductosPage },
+        { path: "/productos", component: ProductosPage, props: true },
+        { path: "/:notFound(.*)", redirect: "/home" },
     ],
+    scrollBehavior(to, from, savedPosition) { 
+        if (savedPosition) {
+            return { ...savedPosition, behavior: 'smooth' };
+        }
+        return { top: 0 };
+    }
 });
 
 export default router;

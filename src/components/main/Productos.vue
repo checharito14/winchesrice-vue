@@ -12,12 +12,14 @@
 			<ProductoCard
 				titulo="Malacates"
 				descripcion="Malacates hidráulicos para la pesca, minería, construcción y agricultura"
+				imagen="/images/malacate.webp"
 			/>
 			<ProductoCard
 				titulo="Bombas"
 				descripcion="Se utilizan con excelentes resultados en el sistema de enfriamiento de la máquina.
                             Para circular agua en los condensadores de refrigeración
                             Para agitar la salmuera en las tinas de precongelación."
+				imagen="/images/bomba.webp"
 				reverse
 			/>
 			<ProductoCard
@@ -26,6 +28,7 @@
 								Cáncamo de acero fundido. 
 								Tornillería de acero de alta resistencia, sumamente fuerte y robusta
 								.Económica y eficiente"
+				imagen="/images/polea.webp"
 			/>
 		</div>
 	</section>
@@ -43,6 +46,10 @@ import ProductoCard from "../productos/ProductoCard.vue";
 	justify-content: center;
 	align-items: center;
 	margin: 1.5rem;
+
+	@include tablet {
+		
+	}
 
 	&__text {
 		font-weight: 400;

@@ -42,9 +42,11 @@ import ContactoForm from "../components/contacto/ContactoForm.vue";
 	margin: 0 3rem;
 	min-height: 110vh;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
 	align-items: center;
 
+	@include desktop {
+		grid-template-columns: 1fr 1fr;
+	}
 	&__content {
 		width: 100%;
 		max-width: 1400px;

@@ -23,10 +23,13 @@
 .historia {
 	display: grid;
 	padding: 2rem;
-	grid-template-columns: 2fr 1fr;
-	height: 100vh;
+	min-height: 100vh;
 	justify-content: center;
 	align-items: center;
+
+	@include tablet {
+		grid-template-columns: 2fr 1fr;
+	}
 
 	&__text {
 		h2 {

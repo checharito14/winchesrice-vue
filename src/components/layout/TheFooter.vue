@@ -44,13 +44,20 @@
 <style lang="scss" scoped>
 footer {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	width: 100%;
+	max-width: 100%;
 	background-color: $azul;
 	color: #fff;
 	text-align: center;
 	bottom: 0;
 	padding: 1.5rem;
+
+	@include tablet {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@include tablet {
+		grid-template-columns: 1fr 1fr;
+	}
 }
 /* footer izquierda */
 .footer-izquierda {
@@ -114,7 +121,6 @@ footer {
 			border-radius: 50%;
 			margin-right: 1rem;
 		}
-		
 	}
 }
 </style>

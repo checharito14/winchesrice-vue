@@ -16,12 +16,14 @@
 
 <style lang="scss" scoped>
 .hero {
-	height: 100vh;
-	background-image: url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/malacates4-B8UpHDaPhE6ecoI2UnidVgkDY7i2Pu.gif");
+	min-height: 100vh;
+	background-image: url('/images/malacate_principal.webp');
 	background-size: cover;
 	background-position: center;
 	position: relative;
-
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	&::before {
 		content: "";

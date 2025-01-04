@@ -22,14 +22,14 @@ const transporter = nodeMailer.createTransport({
 });
 
 app.post("/send-email", (req, res) => {
-    const { nombre, email, telefono, pais, ciudad, mensaje } = req.body;
+    const { nombre, email, telefono, pais, estado, mensaje } = req.body;
 
     const validation = validateFormData({
         nombre,
         email,
         telefono,
         pais,
-        ciudad,
+        estado,
         mensaje,
     });
     if (!validation.valid) {
@@ -40,7 +40,7 @@ app.post("/send-email", (req, res) => {
         from: email,
         to: process.env.MAIL_EMAIL,
         subject: `Nuevo mensaje de ${nombre}`,
-        text: `Nombre: ${nombre}\nEmail: ${email}\nTelefono: ${telefono}\nPais: ${pais}\nCiudad: ${ciudad}\nMensaje: ${mensaje}`,
+        text: `Nombre: ${nombre}\nEmail: ${email}\nTelefono: ${telefono}\nPais: ${pais}\nCiudad: ${estado}\nMensaje: ${mensaje}`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -53,7 +53,6 @@ app.post("/send-email", (req, res) => {
         res.status(200).send("Email enviado");
     });
 
-  
 });  
 
 //Iniciar el servidor    
@@ -73,7 +72,7 @@ function validateFormData(data) {
         return { valid: false, message: "Telefono invalido" };
     }
 
-    if (!data.nombre || !data.pais || !data.ciudad || !data.mensaje) {
+    if (!data.nombre || !data.pais || !data.mensaje) {
         return { valid: false, message: "Todos los campos son requeridos" };
     }
 

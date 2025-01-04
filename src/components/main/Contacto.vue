@@ -13,15 +13,14 @@
 			></iframe>
 		</div>
 		<div class="contacto__info">
-			<p>Calzada Gabriel Leyva # 2116, Mazatlán, Sinaloa, México.</p>
+			<p>Calzada Gabriel Leyva #2116, Mazatlán, Sinaloa, México.</p>
 			<p>Tel: (669) 982-17-64 , 981-33-65</p>
-			<p>Email:</p>
+			<p>Email: maxi@red2000.com.mx</p>
 		</div>
 	</section>
 </template>
 
-<script>
-</script>
+<script></script>
 
 <style lang="scss">
 .contacto {
@@ -40,8 +39,8 @@
 	}
 
 	&__info {
-        padding: .5rem;
-        text-align: center;
+		padding: 0.5rem;
+		text-align: center;
 		p {
 			line-height: 1.5;
 		}
