@@ -15,14 +15,21 @@
 					<i class="fa-solid fa-phone" style="color: blue"></i>(669)
 					982-17-64 , 981-33-65
 				</p>
-				<p>
-					<i class="fa-brands fa-whatsapp" style="color: green"></i
-					>+52 (669)227-33-53
-				</p>
-				<p>
-					<i class="fa-solid fa-envelope" style="color: white"></i
-					>maxi@red2000.com.mx
-				</p>
+				<a href="https://wa.me/526692273353">
+					<p>
+						<i
+							class="fa-brands fa-whatsapp"
+							style="color: green"
+						></i
+						>+52 (669)227-33-53
+					</p>
+				</a>
+				<a href="mailto:maxi@red2000.com.mx">
+					<p>
+						<i class="fa-solid fa-envelope" style="color: white"></i
+						>maxi@red2000.com.mx
+					</p>
+				</a>
 			</div>
 		</div>
 		<div class="contacto__form">
@@ -39,13 +46,15 @@ import ContactoForm from "../components/contacto/ContactoForm.vue";
 
 <style lang="scss" scoped>
 .contacto {
-	margin: 0 3rem;
-	min-height: 110vh;
+	margin: 3rem 3rem;
+	min-height: 100vh;
 	display: grid;
-	align-items: center;
+	place-content: center;
 
 	@include desktop {
 		grid-template-columns: 1fr 1fr;
+		margin: 0 3rem;
+		align-items: center;
 	}
 	&__content {
 		width: 100%;

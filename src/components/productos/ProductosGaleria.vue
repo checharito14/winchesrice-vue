@@ -15,6 +15,7 @@
 				slideShadows: true,
 			}"
 			:pagination="true"
+			:lazy="true"
 			:modules="modules"
 			class="mySwiper"
 		>
@@ -22,10 +23,7 @@
 				v-for="(imagen, index) in store.getCategoriaInfo.imagenes"
 				:key="index"
 			>
-				<img
-					:src="imagen"
-					loading="lazy"
-				/>
+				<img :src="imagen" loading="lazy" />
 			</swiper-slide>
 		</swiper>
 	</section>

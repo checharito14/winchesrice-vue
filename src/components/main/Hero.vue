@@ -10,14 +10,12 @@
 			</p>
 		</div>
 	</section>
-
-	<section class="historia"></section>
 </template>
 
 <style lang="scss" scoped>
 .hero {
-	min-height: 100vh;
-	background-image: url('/images/malacate_principal.webp');
+	min-height: 50vh;
+	background-image: url("/images/malacate_principal_small.webp");
 	background-size: cover;
 	background-position: center;
 	position: relative;
@@ -25,13 +23,19 @@
 	justify-content: center;
 	align-items: center;
 
+	@include tablet {
+		background-image: url("/images/malacate_principal_medium.webp");
+		min-height: 90vh;
+	}
+
+	@include desktop {
+		background-image: url("/images/malacate_principal_large.webp");
+	}
+
 	&::before {
 		content: "";
 		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
+		inset: 0;
 		background: rgba(0, 0, 0, 0.5);
 	}
 

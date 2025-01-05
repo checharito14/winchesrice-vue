@@ -14,6 +14,9 @@ import TheFooter from "./components/layout/TheFooter.vue";
 			</router-view>
 		</div>
 		<TheFooter />
+		<a href="https://wa.me/526692231329" class="whatsapp-button" target="_blank" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
 	</div>
 </template>
 
@@ -44,6 +47,36 @@ img {
 
 a {
 	text-decoration: none;
+}
+
+.whatsapp-button {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background-color: #25d366;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-decoration: none;
+
+	@include  desktop {
+		width: 60px;
+        height: 60px;
+        font-size: 30px;
+        bottom: 20px;
+        right: 20px;
+	}
+}
+
+.whatsapp-button:hover {
+    background-color: #1ebe57;
 }
 
 // Animaciones

@@ -14,7 +14,7 @@
 			<h2>{{ titulo }}</h2>
 			<p>{{ descripcion }}</p>
 			<base-button link to="/productos">
-				Mas información <i class="fa-solid fa-arrow-right"></i>
+				Mas información <i class="fa-solid fa-arrow-right icono"></i>
 			</base-button>
 		</div>
 	</div>
@@ -52,7 +52,6 @@ const { target: cardRef, isIntersecting } = useIntersectionObserver({
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
-	margin: 2rem;
 	padding: 1rem;
 	opacity: 0;
 	transform: translateY(30px);
@@ -60,6 +59,7 @@ const { target: cardRef, isIntersecting } = useIntersectionObserver({
 
 	@include tablet {
 		flex-direction: row;
+		margin: 2rem;
 	}
 
 	&__imagen {
@@ -69,17 +69,21 @@ const { target: cardRef, isIntersecting } = useIntersectionObserver({
 		@include tablet {
 			flex: 1;
 		}
+
+		@include telefono {
+			width: 100%;
+		}
 	}
 
 	&__content {
+		text-align: center;
 		@include tablet {
 			flex: 1;
+			text-align: left;
 		}
 		h2 {
 			color: $azul-claro;
 			font-size: 2.5rem;
-
-
 		}
 		p {
 			color: $gris-oscuro;
@@ -88,14 +92,18 @@ const { target: cardRef, isIntersecting } = useIntersectionObserver({
 	}
 }
 
+.icono {
+	display: none;
+
+	@include tablet {
+		display: inline;
+	}
+}
+
 @include tablet {
 	.card--reverse {
 		flex-direction: row-reverse;
 	}
-}
-.icon {
-	width: 20px;
-	height: 20px;
 }
 
 .card.is-visible {

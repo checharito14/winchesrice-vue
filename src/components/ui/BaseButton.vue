@@ -29,7 +29,7 @@ button,
 a {
     padding: .5rem 1.5rem;
     border: none;
-    display: inline-flex;
+    display: block;
     align-items: center;
     gap: .5rem;
     cursor: pointer;
@@ -38,6 +38,10 @@ a {
     color: $blanco;
     border-radius: 4px;
     margin-top: 1rem;
+
+    @include tablet {
+        display: inline-flex;
+    }
 }
 
 button{

@@ -45,18 +45,25 @@ import ProductoCard from "../productos/ProductoCard.vue";
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin: 1.5rem;
+	margin: 1rem;
+	padding: 0 1rem;
 
-	@include tablet {
-		
+	@include telefono {
+		margin: 1.5rem;
 	}
 
 	&__text {
 		font-weight: 400;
-		width: 570px;
-		margin: 5rem 0;
+		width: 100%;
+		margin: 2rem 0;
 		color: $gris-oscuro;
 		line-height: 1.5;
+
+		@include tablet {
+			width: 570px;
+			margin: 4rem 0;
+		}
+
 	}
 
 	&__cards {
