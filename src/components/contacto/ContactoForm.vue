@@ -139,25 +139,25 @@ const fetchCountries = async () => {
 	}
 };
 
-// const fetchStates = async () => {
-// 	if (formData.value.pais === "Mexico") {
-// 		try {
-// 			const response = await axios.get(
-// 				"https://api.countrystatecity.in/v1/countries/MX/states",
-// 				{
-// 					headers: {
-// 						"X-CSCAPI-KEY": "YOUR_API_KEY_HERE",
-// 					},
-// 				}
-// 			);
-// 			states.value = response.data;
-// 		} catch (error) {
-// 			console.error("Error fetching states:", error);
-// 		}
-// 	} else {
-// 		states.value = [];
-// 	}
-// };
+const fetchStates = async () => {
+	if (formData.value.pais === "Mexico") {
+		try {
+			const response = await axios.get(
+				"https://api.countrystatecity.in/v1/countries/MX/states",
+				{
+					headers: {
+						"X-CSCAPI-KEY": "YOUR_API_KEY_HERE",
+					},
+				}
+			);
+			states.value = response.data;
+		} catch (error) {
+			console.error("Error fetching states:", error);
+		}
+	} else {
+		states.value = [];
+	}
+};
 
 //Reglas de validación
 const rules = {

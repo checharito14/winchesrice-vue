@@ -3,7 +3,7 @@
 	  <nav>
 		<div class="nav-top">
 		  <router-link class="logo" to="/">
-			<img src="../../assets/logo.rice.png" alt="Logo winches rice" />
+			<img src="../../assets/logo.rice.webp" alt="Logo winches rice" />
 		  </router-link>
 		  
 		  <button 

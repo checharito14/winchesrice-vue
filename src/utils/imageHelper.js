@@ -1,5 +1,5 @@
 export function getEspecUrl(name) {
-    return new URL(`../assets/images/${name}.png`, import.meta.url).href;
+    return new URL(`../assets/images/${name}.webp`, import.meta.url).href;
 }
 export function generateImagesUrls(category, count) {
     return Array.from(

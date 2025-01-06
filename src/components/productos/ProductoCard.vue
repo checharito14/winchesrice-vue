@@ -11,7 +11,7 @@
 			<img :src="imagen" :alt="titulo" loading="lazy" />
 		</div>
 		<div class="card__content">
-			<h2>{{ titulo }}</h2>
+			<h3>{{ titulo }}</h3>
 			<p>{{ descripcion }}</p>
 			<base-button link to="/productos">
 				Mas información <i class="fa-solid fa-arrow-right icono"></i>
@@ -81,7 +81,7 @@ const { target: cardRef, isIntersecting } = useIntersectionObserver({
 			flex: 1;
 			text-align: left;
 		}
-		h2 {
+		h3 {
 			color: $azul-claro;
 			font-size: 2.5rem;
 		}

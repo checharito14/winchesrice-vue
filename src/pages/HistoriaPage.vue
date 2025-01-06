@@ -14,7 +14,7 @@
 			</p>
 		</div>
 		<div class="historia__imagen">
-			<img src="@/assets/historia-image.png" alt="Historia" />
+			<img src="@/assets/historia-image.webp" alt="Historia" />
 		</div>
 	</section>
 </template>
@@ -33,7 +33,7 @@
 
 	&__text {
 		h2 {
-			font-size: 3.5rem;
+			font-size: 3rem;
 			margin-bottom: 1rem;
 			text-align: center;
 		}

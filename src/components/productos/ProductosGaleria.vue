@@ -23,7 +23,9 @@
 				v-for="(imagen, index) in store.getCategoriaInfo.imagenes"
 				:key="index"
 			>
-				<img :src="imagen" loading="lazy" />
+				<picture>
+					<img :src="imagen" loading="lazy" />
+				</picture>
 			</swiper-slide>
 		</swiper>
 	</section>
@@ -48,7 +50,7 @@ const store = useStore();
 const imagenes = store.getCategoriaInfo.imagenes;
 </script>
 
-<style>
+<style scoped lang="scss">
 .swiper {
 	width: 100%;
 	padding-top: 50px;
@@ -58,13 +60,18 @@ const imagenes = store.getCategoriaInfo.imagenes;
 .swiper-slide {
 	background-position: center;
 	background-size: cover;
-	width: 300px;
-	height: 300px;
+	width: 200px;
+	height: 250px;
+
+	@include tablet {
+		width: 300px;
+		height: 300px;
+	}
 }
 
 .swiper-slide img {
 	display: block;
-	height: 100%;
 	width: 100%;
+	height: 100%;
 }
 </style>
