@@ -139,25 +139,25 @@ const fetchCountries = async () => {
 	}
 };
 
-const fetchStates = async () => {
-	if (formData.value.pais === "Mexico") {
-		try {
-			const response = await axios.get(
-				"https://api.countrystatecity.in/v1/countries/MX/states",
-				{
-					headers: {
-						"X-CSCAPI-KEY": "YOUR_API_KEY_HERE",
-					},
-				}
-			);
-			states.value = response.data;
-		} catch (error) {
-			console.error("Error fetching states:", error);
-		}
-	} else {
-		states.value = [];
-	}
-};
+// const fetchStates = async () => {
+// 	if (formData.value.pais === "Mexico") {
+// 		try {
+// 			const response = await axios.get(
+// 				"https://api.countrystatecity.in/v1/countries/MX/states",
+// 				{
+// 					headers: {
+// 						"X-CSCAPI-KEY": "YOUR_API_KEY_HERE",
+// 					},
+// 				}
+// 			);
+// 			states.value = response.data;
+// 		} catch (error) {
+// 			console.error("Error fetching states:", error);
+// 		}
+// 	} else {
+// 		states.value = [];
+// 	}
+// };
 
 //Reglas de validación
 const rules = {
@@ -177,12 +177,16 @@ const rules = {
 const v$ = useVuelidate(rules, formData);
 const isLoading = ref(false);
 
+const API_URL = process.env.NODE_ENV === 'production'
+  ? '/api/send-email'  // En producción, las rutas API comenzarán con /api
+  : 'http://localhost:3000/send-email';
+
 const submitForm = async () => {
 	isLoading.value = true;
 	const result = await v$.value.$validate();
 	if (result) {
 		try {
-			const response = await fetch("http://localhost:3000/send-email", {
+			const response = await fetch(API_URL, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -190,7 +194,7 @@ const submitForm = async () => {
 				body: JSON.stringify(formData.value),
 			});
 			if (response.ok) {
-				// alert("Mensaje enviado correctamente");
+				alert("Mensaje enviado correctamente");
 				formData.value = {
 					nombre: "",
 					email: "",
