@@ -37,7 +37,7 @@ export default async function handler(req, res) {
     from: email,
     to: process.env.MAIL_EMAIL,
     subject: `Nuevo mensaje de ${nombre}`,
-    text: `Nombre: ${nombre}\nEmail: ${email}\nTeléfono: ${telefono}\nPaís: ${pais}\nCiudad: ${estado}\nMensaje: ${mensaje}`,
+    text: `Nombre: ${nombre}\nEmail: ${email}\nTeléfono: ${telefono}\nPaís: ${pais}\Estado: ${estado}\nMensaje: ${mensaje}`,
   };
 
   try {
