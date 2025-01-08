@@ -74,11 +74,7 @@
 			<!-- Estado -->
 			<div class="form-group" v-if="formData.pais === 'Mexico'">
 				<label for="estado">Estado</label>
-				<select
-					v-model="formData.estado"
-					:class="{ error: v$.estado.$error }"
-					id="estado"
-				>
+				<select v-model="formData.estado" id="estado">
 					<option
 						v-for="state in states"
 						:key="state.iso2"
@@ -105,9 +101,11 @@
 					>Ingresa un mensaje</span
 				>
 			</div>
-			<base-button type="submit" :disabled="isLoading"
-				>Enviar</base-button
-			>
+
+			<base-button type="submit">
+				<i v-if="isLoading" class="fas fa-spinner fa-spin"></i>
+				<p v-else>Enviar</p>
+			</base-button>
 		</form>
 	</div>
 </template>
@@ -139,25 +137,26 @@ const fetchCountries = async () => {
 	}
 };
 
-// const fetchStates = async () => {
-// 	if (formData.value.pais === "Mexico") {
-// 		try {
-// 			const response = await axios.get(
-// 				"https://api.countrystatecity.in/v1/countries/MX/states",
-// 				{
-// 					headers: {
-// 						"X-CSCAPI-KEY": "YOUR_API_KEY_HERE",
-// 					},
-// 				}
-// 			);
-// 			states.value = response.data;
-// 		} catch (error) {
-// 			console.error("Error fetching states:", error);
-// 		}
-// 	} else {
-// 		states.value = [];
-// 	}
-// };
+const fetchStates = async () => {
+	if (formData.value.pais === "Mexico") {
+		try {
+			const response = await axios.get(
+				"https://api.countrystatecity.in/v1/countries/MX/states",
+				{
+					headers: {
+						"X-CSCAPI-KEY":
+							"RUFCampZSm5BVzROa2dzV2JOSlYzRlpwYjRHT3IwWFEwbTFhM29Icw==",
+					},
+				}
+			);
+			states.value = response.data;
+		} catch (error) {
+			console.error("Error fetching states:", error);
+		}
+	} else {
+		states.value = [];
+	}
+};
 
 //Reglas de validación
 const rules = {
@@ -177,9 +176,10 @@ const rules = {
 const v$ = useVuelidate(rules, formData);
 const isLoading = ref(false);
 
-const API_URL = process.env.NODE_ENV === 'production'
-  ? '/api/send-email'  // En producción, las rutas API comenzarán con /api
-  : 'http://localhost:3000/send-email';
+const API_URL =
+	process.env.NODE_ENV === "production"
+		? "/api/send-email" // En producción, las rutas API comenzarán con /api
+		: "http://localhost:3000/api/send-email";
 
 const submitForm = async () => {
 	isLoading.value = true;
@@ -209,6 +209,8 @@ const submitForm = async () => {
 		} catch (error) {
 			console.log(error);
 			alert("Ocurrió un error en la conexion intentalo mas tarde");
+		} finally {
+			isLoading.value = false;
 		}
 	}
 	isLoading.value = false;
