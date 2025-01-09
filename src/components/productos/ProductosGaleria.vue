@@ -23,9 +23,7 @@
 				v-for="(imagen, index) in store.getCategoriaInfo.imagenes"
 				:key="index"
 			>
-				<picture>
-					<img :src="imagen" loading="lazy" />
-				</picture>
+				<img :src="imagen" loading="lazy" alt="Imagen producto" />
 			</swiper-slide>
 		</swiper>
 	</section>
