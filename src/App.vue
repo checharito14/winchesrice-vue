@@ -1,9 +1,11 @@
 <script setup>
 import TheHeader from "./components/layout/TheHeader.vue";
 import TheFooter from "./components/layout/TheFooter.vue";
+import { Analytics } from "@vercel/analytics/vue";
 </script>
 
 <template>
+	<Analytics />
 	<div class="app-container">
 		<TheHeader />
 		<div class="main-content">
