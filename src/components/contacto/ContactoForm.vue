@@ -1,5 +1,11 @@
 <template>
 	<div class="form-container">
+		<base-dialog
+            :show="!!confirm"
+            title="Mensaje enviado correctamente"
+            @close="handleConfirm"
+            >{{ confirm }}</base-dialog
+        >
 		<form @submit.prevent="submitForm">
 			<div class="form-header">
 				<i class="fa-regular fa-message"></i>
@@ -127,6 +133,7 @@ const formData = ref({
 
 const countries = ref([]);
 const states = ref([]);
+const confirm = ref(null)
 
 const fetchCountries = async () => {
 	try {
@@ -194,7 +201,8 @@ const submitForm = async () => {
 				body: JSON.stringify(formData.value),
 			});
 			if (response.ok) {
-				alert("Mensaje enviado correctamente");
+				// alert("Mensaje enviado correctamente");
+				confirm.value = "Nos pondremos en contacto contigo lo mas pronto posible"
 				formData.value = {
 					nombre: "",
 					email: "",
@@ -215,6 +223,10 @@ const submitForm = async () => {
 	}
 	isLoading.value = false;
 };
+
+const handleConfirm = () => {
+	confirm.value = null
+}
 
 onMounted(() => {
 	fetchCountries();
