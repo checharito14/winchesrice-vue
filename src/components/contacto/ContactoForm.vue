@@ -1,17 +1,17 @@
 <template>
 	<div class="form-container">
 		<base-dialog
-            :show="!!confirm"
-            title="Mensaje enviado correctamente"
-            @close="handleConfirm"
-            >{{ confirm }}</base-dialog
-        >
+			:show="!!confirm"
+			title="Mensaje enviado correctamente"
+			@close="handleConfirm"
+			>{{ confirm }}</base-dialog
+		>
 		<base-dialog
-            :show="!!error"
-            title="Ocurrio un error"
-            @close="handleError"
-            >{{ error }}</base-dialog
-        >
+			:show="!!error"
+			title="Ocurrio un error"
+			@close="handleError"
+			>{{ error }}</base-dialog
+		>
 		<form @submit.prevent="submitForm">
 			<div class="form-header">
 				<i class="fa-regular fa-message"></i>
@@ -139,8 +139,8 @@ const formData = ref({
 
 const countries = ref([]);
 const states = ref([]);
-const confirm = ref(null)
-const error = ref(null)
+const confirm = ref(null);
+const error = ref(null);
 
 const fetchCountries = async () => {
 	try {
@@ -190,10 +190,8 @@ const rules = {
 const v$ = useVuelidate(rules, formData);
 const isLoading = ref(false);
 
-const API_URL =
-	process.env.NODE_ENV === "production"
-		? "/api/send-email" // En producción, las rutas API comenzarán con /api
-		: "http://localhost:3000/api/send-email";
+//En produccion las APIs son con api/
+const API_URL = process.env.NODE_ENV === "production" ? "/api/send-email" : "http://localhost:3000/api/send-email";
 
 const submitForm = async () => {
 	isLoading.value = true;
@@ -208,7 +206,8 @@ const submitForm = async () => {
 				body: JSON.stringify(formData.value),
 			});
 			if (response.ok) {
-				confirm.value = "Hemos recibido tu solicitud. Obtendras una respuesta en breve"
+				confirm.value =
+					"Hemos recibido tu solicitud. Obtendras una respuesta en breve";
 				formData.value = {
 					nombre: "",
 					email: "",
@@ -218,24 +217,23 @@ const submitForm = async () => {
 					mensaje: "",
 				};
 			} else {
-				error.value("Ocurrio un error al enviar el mensaje")
+				error.value("Ocurrio un error al enviar el mensaje");
 			}
 		} catch (err) {
-			error.value =  "Ocurrió un error en la conexion intentalo mas tarde"
+			error.value = "Ocurrió un error en la conexion intentalo mas tarde";
 		} finally {
 			isLoading.value = false;
 		}
 	}
-	isLoading.value = false;
 };
 
 const handleConfirm = () => {
-	confirm.value = null
-}
+	confirm.value = null;
+};
 
 const handleError = () => {
-	confirm.value = null
-}
+	confirm.value = null;
+};
 
 onMounted(() => {
 	fetchCountries();
