@@ -1,11 +1,11 @@
 <template>
     <teleport to="body">
-        <div v-if="show" @click="tryClose" class="backdrop"></div>
+        <div v-if="!show" @click="tryClose" class="backdrop"></div>
         <transition name="dialog">
-            <dialog open v-if="show">
+            <dialog open v-if="!show">
                 <header>
                     <slot name="header">
-                        <h2>{{ title }}</h2>
+                        <h3>{{ title }}</h3>
                     </slot>
                 </header>
                 <section>
@@ -13,7 +13,7 @@
                 </section>
                 <menu v-if="!fixed">
                     <slot name="actions">
-                        <base-button @click="tryClose">Close</base-button>
+                        <base-button @click="tryClose">Aceptar</base-button>
                     </slot>
                 </menu>
             </dialog>
@@ -50,7 +50,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .backdrop {
     position: fixed;
     top: 0;
@@ -73,12 +73,12 @@ dialog {
     padding: 0;
     margin: 0;
     overflow: hidden;
-    background-color: white;
+    background-color: $blanco;
 }
 
 header {
-    background-color: #3a0061;
-    color: white;
+    background-color: $azul;
+    color: $blanco;
     width: 100%;
     padding: 1rem;
 }

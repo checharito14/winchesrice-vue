@@ -6,6 +6,12 @@
             @close="handleConfirm"
             >{{ confirm }}</base-dialog
         >
+		<base-dialog
+            :show="!!error"
+            title="Ocurrio un error"
+            @close="handleError"
+            >{{ error }}</base-dialog
+        >
 		<form @submit.prevent="submitForm">
 			<div class="form-header">
 				<i class="fa-regular fa-message"></i>
@@ -134,6 +140,7 @@ const formData = ref({
 const countries = ref([]);
 const states = ref([]);
 const confirm = ref(null)
+const error = ref(null)
 
 const fetchCountries = async () => {
 	try {
@@ -201,8 +208,7 @@ const submitForm = async () => {
 				body: JSON.stringify(formData.value),
 			});
 			if (response.ok) {
-				// alert("Mensaje enviado correctamente");
-				confirm.value = "Nos pondremos en contacto contigo lo mas pronto posible"
+				confirm.value = "Hemos recibido tu solicitud. Obtendras una respuesta en breve"
 				formData.value = {
 					nombre: "",
 					email: "",
@@ -212,11 +218,10 @@ const submitForm = async () => {
 					mensaje: "",
 				};
 			} else {
-				alert("Ocurrió un error al enviar el mensaje");
+				error.value("Ocurrio un error al enviar el mensaje")
 			}
-		} catch (error) {
-			console.log(error);
-			alert("Ocurrió un error en la conexion intentalo mas tarde");
+		} catch (err) {
+			error.value =  "Ocurrió un error en la conexion intentalo mas tarde"
 		} finally {
 			isLoading.value = false;
 		}
@@ -225,6 +230,10 @@ const submitForm = async () => {
 };
 
 const handleConfirm = () => {
+	confirm.value = null
+}
+
+const handleError = () => {
 	confirm.value = null
 }
 
