@@ -191,12 +191,15 @@ const v$ = useVuelidate(rules, formData);
 const isLoading = ref(false);
 
 //En produccion las APIs son con api/
-const API_URL = process.env.NODE_ENV === "production" ? "/api/send-email" : "http://localhost:3000/api/send-email";
+const API_URL =
+	process.env.NODE_ENV === "production"
+		? "/api/send-email"
+		: "http://localhost:3000/api/send-email";
 
 const submitForm = async () => {
-	isLoading.value = true;
 	const result = await v$.value.$validate();
 	if (result) {
+		isLoading.value = true;
 		try {
 			const response = await fetch(API_URL, {
 				method: "POST",
@@ -206,16 +209,7 @@ const submitForm = async () => {
 				body: JSON.stringify(formData.value),
 			});
 			if (response.ok) {
-				confirm.value =
-					"Hemos recibido tu solicitud. Obtendras una respuesta en breve";
-				formData.value = {
-					nombre: "",
-					email: "",
-					telefono: "",
-					pais: "",
-					estado: "",
-					mensaje: "",
-				};
+				confirm.value = "Hemos recibido tu solicitud. Obtendras una respuesta en breve";
 			} else {
 				error.value("Ocurrio un error al enviar el mensaje");
 			}
@@ -223,6 +217,14 @@ const submitForm = async () => {
 			error.value = "Ocurrió un error en la conexion intentalo mas tarde";
 		} finally {
 			isLoading.value = false;
+			formData.value = {
+				nombre: "",
+				email: "",
+				telefono: "",
+				pais: "",
+				estado: "",
+				mensaje: "",
+			};
 		}
 	}
 };
@@ -232,7 +234,7 @@ const handleConfirm = () => {
 };
 
 const handleError = () => {
-	confirm.value = null;
+	error.value = null;
 };
 
 onMounted(() => {
