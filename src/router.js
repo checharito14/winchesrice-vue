@@ -7,8 +7,8 @@ import ProductosPage from "./pages/ProductosPage.vue";
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: "/", redirect: "/home" },
-        { path: "/home", component: HomePage },
+        { path: "/", component: HomePage },
+        { path: "/home", redirect: "/" },
         { path: "/historia", component: HistoriaPage },
         { path: "/contacto", component: ContactoPage },
         { path: "/productos", component: ProductosPage, props: true },

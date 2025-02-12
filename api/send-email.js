@@ -42,10 +42,8 @@ export default async function handler(req, res) {
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log("Correo enviado");
     return res.status(200).json({ message: "Correo enviado exitosamente" });
   } catch (error) {
-    console.error("Error al enviar el correo:", error);
     return res.status(500).json({ message: "Error al enviar el correo" });
   }
 }
