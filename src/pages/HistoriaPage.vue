@@ -26,6 +26,8 @@
 	min-height: 100vh;
 	justify-content: center;
 	align-items: center;
+	max-width: 80%;
+	margin: 0 auto;
 
 	@include tablet {
 		grid-template-columns: 2fr 1fr;
@@ -41,7 +43,7 @@
 		p {
 			text-align: center;
 			line-height: 1.5;
-			padding: 2rem;
+			padding: 4rem;
 		}
 	}
 

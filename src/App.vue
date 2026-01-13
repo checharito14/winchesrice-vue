@@ -12,7 +12,7 @@ import { Analytics } from "@vercel/analytics/vue";
 			<router-view v-slot="{ Component }">
 				<transition name="page">
 					<component :is="Component" class="page-enter" />
-				</transition>
+				</transition>	
 			</router-view>
 		</div>
 		<TheFooter />
@@ -20,7 +20,7 @@ import { Analytics } from "@vercel/analytics/vue";
 			href="https://wa.me/526692273353"
 			class="whatsapp-button"
 			target="_blank"
-			aria-label="Chat on WhatsApp"
+			aria-label="Chat WhatsApp"
 		>
 			<i class="fab fa-whatsapp"></i>
 		</a>
@@ -36,6 +36,7 @@ import { Analytics } from "@vercel/analytics/vue";
 
 body {
 	font-family: $fuente_principal;
+	background-color: #FAFAFA;
 }
 
 .app-container {
@@ -86,19 +87,19 @@ a {
 	background-color: #1ebe57;
 }
 
-// Animaciones
-.page-enter-active {
-	animation: fadeInUp 0.6s ease-out;
-}
+// // Animaciones
+// .page-enter-active {
+// 	animation: fadeInUp 0.6s ease-out;
+// }
 
-@keyframes fadeInUp {
-	from {
-		opacity: 0;
-		transform: translateY(20px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
+// @keyframes fadeInUp {
+// 	from {
+// 		opacity: 0;
+// 		transform: translateY(20px);
+// 	}
+// 	to {
+// 		opacity: 1;
+// 		transform: translateY(0);
+// 	}
+// }
 </style>

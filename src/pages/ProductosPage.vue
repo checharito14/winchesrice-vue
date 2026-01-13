@@ -1,12 +1,15 @@
 <template>
 	<div class="productos">
 		<ProductosNav />
-		<main class="productos__container">
-			<ProductosHeader />
-			<ProductosFeatures />
-			<ProductosGaleria />
-			<ProductosEspec />
-		</main>
+	<main class="productos__container">
+		<ProductosHeader />
+		<div class="separator"></div>
+		<ProductosFeatures />
+		<div class="separator"></div>
+		<ProductosGaleria />
+		<div class="separator"></div>
+		<ProductosEspec />
+	</main>
 	</div>
 </template>
 
@@ -28,6 +31,13 @@ import ProductosGaleria from "../components/productos/ProductosGaleria.vue";
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 2rem 1rem;
+}
+
+.separator {
+	width: 100%;
+	height: 1px;
+	background-color: rgba(0, 0, 0, 0.08);
+	margin: 2rem 0;
 }
 
 .gallery-grid {

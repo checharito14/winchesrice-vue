@@ -1,7 +1,9 @@
 <template>
 	<div class="home-page">
 		<Hero />
+		<div class="separator"></div>
         <Productos />
+		<div class="separator"></div>
 		<Contacto />
 	</div>
 </template>
@@ -16,7 +18,13 @@ import Contacto from "../components/main/Contacto.vue";
 .home-page {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
-	
+	gap: 0;
+}
+
+.separator {
+	width: 100%;
+	height: 1px;
+	background-color: rgba(0, 0, 0, 0.08);
+	margin: 0;
 }
 </style>

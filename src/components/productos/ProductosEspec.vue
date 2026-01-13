@@ -13,10 +13,11 @@ const store = useStore();
 
 <style lang="scss" scoped>
 .productos__especificaciones {
-	background: white;
+	background: $blanco;
 	padding: 2rem;
 	border-radius: 8px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	border: 1px solid rgba(0, 0, 0, 0.06);
 	text-align: center;
 	h2 {
 		font-size: 1.5rem;

@@ -1,12 +1,16 @@
 <template>
 	<section class="productos">
-		<div class="productos__text">
-			<h3>
+		<div class="productos__intro">
+			<div class="intro-badge">Nuestros Servicios</div>
+			<h2 class="intro-title">
 				Le ofrecemos a usted diseños de máquinas pesqueras que pueden
-				contribuir a potenciar la producción pesquera,<br />
+				contribuir a potenciar la producción pesquera
+			</h2>
+			<p class="intro-subtitle">
 				Somos especialistas en la fabricación de winches o malacates
 				hidráulicos
-			</h3>
+			</p>
+			<div class="intro-divider"></div>
 		</div>
 		<div class="productos__cards">
 			<ProductoCard
@@ -45,31 +49,70 @@ import ProductoCard from "../productos/ProductoCard.vue";
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin: 1rem;
-	padding: 0 1rem;
+	margin: 0;
+	padding: 0;
 
-	@include telefono {
-		margin: 1.5rem;
-	}
-
-	&__text {
-		font-weight: 400;
+	&__intro {
 		width: 100%;
-		margin: 2rem 0;
-		color: $gris-oscuro;
-		line-height: 1.5;
+		max-width: 900px;
+		padding: 4rem 2rem 3rem;
+		text-align: center;
+		margin: 0 auto;
 
-		@include tablet {
-			width: 570px;
-			margin: 4rem 0;
+		.intro-badge {
+			display: inline-block;
+			padding: 0.5rem 1.5rem;
+			background: rgba($amarillo, 0.1);
+			color: $azul;
+			border-radius: 8px;
+			font-size: 0.85rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 1.5rem;
 		}
 
+		.intro-title {
+			font-size: 1.5rem;
+			font-weight: 600;
+			line-height: 1.5;
+			color: $gris-oscuro;
+			margin-bottom: 1rem;
+
+			@include tablet {
+				font-size: 1.8rem;
+			}
+		}
+
+		.intro-subtitle {
+			font-size: 1.1rem;
+			color: $azul;
+			font-weight: 500;
+			margin-bottom: 2rem;
+
+			@include tablet {
+				font-size: 1.25rem;
+			}
+		}
+
+		.intro-divider {
+			width: 80px;
+			height: 4px;
+			background: linear-gradient(90deg, transparent, $amarillo, transparent);
+			margin: 0 auto;
+		}
 	}
 
 	&__cards {
 		display: flex;
 		flex-direction: column;
 		gap: 4rem;
+		margin: 1rem;
+		padding: 0 1rem;
+
+		@include telefono {
+			margin: 1.5rem;
+		}
 	}
 }
 </style>

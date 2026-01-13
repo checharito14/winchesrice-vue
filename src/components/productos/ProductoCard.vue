@@ -56,10 +56,16 @@ const { target: cardRef, isIntersecting } = useIntersectionObserver({
 	opacity: 0;
 	transform: translateY(30px);
 	transition: opacity 0.5s, transform 0.5s;
+	background-color: $blanco;
+	border-radius: 8px;
+	// box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
+	border: 1px solid rgba(0, 0, 0, 0.1);
+
 
 	@include tablet {
 		flex-direction: row;
 		margin: 2rem;
+		padding: 2rem;
 	}
 
 	&__imagen {

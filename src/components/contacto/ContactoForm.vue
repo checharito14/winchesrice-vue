@@ -8,7 +8,7 @@
 		>
 		<base-dialog
 			:show="!!error"
-			title="Ocurrio un error"
+			title="Hubo un error"
 			@close="handleError"
 			>{{ error }}</base-dialog
 		>
@@ -71,12 +71,13 @@
 					id="pais"
 					@change="fetchStates"
 				>
+					<option value="" disabled selected>Selecciona un país</option>
 					<option
 						v-for="country in countries"
-						:key="country.alpha3Code"
-						:value="country.name"
+						:key="country"
+						:value="country"
 					>
-						{{ country.name }}
+						{{ country }}
 					</option>
 				</select>
 				<span v-if="v$.pais.$error" class="error-msg"
@@ -144,8 +145,11 @@ const error = ref(null);
 
 const fetchCountries = async () => {
 	try {
-		const response = await axios.get("https://restcountries.com/v2/all");
-		countries.value = response.data;
+		const req = await axios.get("https://restcountries.com/v3.1/all?fields=name")
+		const response = req.data;
+		const countryName = response.map((country) => country.name.common).sort();
+		countries.value = countryName;
+
 	} catch (error) {
 		console.error("Error fetching countries:", error);
 	}
@@ -194,7 +198,7 @@ const isLoading = ref(false);
 const API_URL =
 	process.env.NODE_ENV === "production"
 		? "/api/send-email"
-		: "http://localhost:3000/api/send-email";
+		: "http://localhost:5173/api/send-email";
 
 const submitForm = async () => {
 	const result = await v$.value.$validate();
@@ -209,12 +213,14 @@ const submitForm = async () => {
 				body: JSON.stringify(formData.value),
 			});
 			if (response.ok) {
-				confirm.value = "Hemos recibido tu solicitud. Obtendras una respuesta en breve";
+				confirm.value =
+					"Hemos recibido tu solicitud. Obtendrás una respuesta en breve";
 			} else {
-				error.value("Ocurrio un error al enviar el mensaje");
+				console.log(response);
+				error.value = "Ocurrió un error al enviar el mensaje";
 			}
 		} catch (err) {
-			error.value = "Ocurrió un error en la conexion intentalo mas tarde";
+			error.value = "Ocurrió un error en la conexión intentalo más tarde";
 		} finally {
 			isLoading.value = false;
 			formData.value = {
@@ -289,7 +295,7 @@ onMounted(() => {
 		border: 2px solid $gris;
 		font: inherit;
 		padding: 0.5rem;
-		border-radius: 0.5rem;
+		border-radius: 5px;
 
 		&:focus {
 			outline: none;

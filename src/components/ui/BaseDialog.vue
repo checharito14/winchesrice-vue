@@ -57,19 +57,22 @@ export default {
     left: 0;
     height: 100vh;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.4);
     z-index: 10;
+    backdrop-filter: blur(2px);
 }
 
 dialog {
     position: fixed;
-    top: 20vh;
-    left: 10%;
-    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
     z-index: 100;
-    border-radius: 12px;
-    border: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     padding: 0;
     margin: 0;
     overflow: hidden;
@@ -77,31 +80,37 @@ dialog {
 }
 
 header {
-    background-color: $azul;
-    color: $blanco;
+    background-color: transparent;
+    color: $gris-oscuro;
     width: 100%;
-    padding: 1rem;
-}
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 
-header h2 {
-    margin: 0;
+    h3 {
+        margin: 0;
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
 }
 
 section {
-    padding: 1rem;
+    padding: 1.5rem 2rem;
+    color: $gris-oscuro;
+    line-height: 1.6;
 }
 
 menu {
-    padding: 1rem;
+    padding: 1rem 2rem 2rem;
     display: flex;
     justify-content: flex-end;
     margin: 0;
+    gap: 0.75rem;
 }
 
 .dialog-enter-from,
 .dialog-leave-to {
   opacity: 0;
-  transform: scale(0.8);
+  transform: translate(-50%, -45%);
 }
 
 .dialog-enter-active {
@@ -109,19 +118,18 @@ menu {
 }
 
 .dialog-leave-active {
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .dialog-enter-to,
 .dialog-leave-from {
   opacity: 1;
-  transform: scale(1);
+  transform: translate(-50%, -50%);
 }
 
 @media (min-width: 768px) {
     dialog {
-        left: calc(50% - 20rem);
-        width: 40rem;
+        width: 400px;
     }
 }
 </style>
