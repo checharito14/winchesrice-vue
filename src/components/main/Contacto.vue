@@ -37,6 +37,9 @@
 		max-width: 600px;
 		position: relative;
 		aspect-ratio: 16/9;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 
 		iframe {
 			position: absolute;
@@ -49,10 +52,21 @@
 	}
 
 	&__info {
-		padding: 0.5rem;
+		padding: 1.5rem;
 		text-align: center;
+		background: rgba($amarillo, 0.1);
+		border-radius: 8px;
+		margin-top: 1.5rem;
+		
 		p {
-			line-height: 1.5;
+			line-height: 1.7;
+			margin-bottom: 0.75rem;
+			color: $gris-oscuro;
+			font-size: 1rem;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
 		}
 	}
 }

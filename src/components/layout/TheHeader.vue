@@ -58,7 +58,13 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	position: relative;
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+	background-color: rgba(255, 255, 255, 0.98);
+	backdrop-filter: blur(10px);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	transition: all 0.3s ease;
   
 	nav {
 	  width: 70%;
@@ -77,7 +83,7 @@
 	  @include tablet {
 		flex-direction: row;
 		justify-content: space-between;
-		padding: 0;
+		padding: 0.75rem 0;
   
 		.nav-top {
 		  flex: 0 0 auto;
@@ -85,14 +91,19 @@
 	  }
   
 	  img {
-		height: 40px;
+		height: 45px;
 		width: auto;
 		transition: all 0.3s ease;
+		filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+
+		&:hover {
+			transform: scale(1.05);
+		}
 	  }
 	}
   
 	@include tablet {
-	  height: 4rem;
+	  height: 5rem;
 	}
   }
   
@@ -119,17 +130,46 @@
 	text-decoration: none;
 	display: inline-block;
 	color: $azul;
+	transition: color 0.3s ease;
+	position: relative;
+  }
+  
+  a:not(.logo) {
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
 	transition: all 0.3s ease;
-  }
-  
-  a:hover:not(.logo) {
-	transform: scale(1.1);
-  }
-  
-  a:hover,
-  a:active,
-  a.router-link-active {
-	color: #ffbc0e;
+	font-weight: 500;
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 0;
+		height: 3px;
+		background: linear-gradient(90deg, $amarillo, #ffd54f);
+		transition: width 0.3s ease;
+		border-radius: 2px;
+	}
+
+	&:hover {
+		color: $amarillo;
+		// background-color: rgba(255, 188, 14, 0.1);
+		
+		&::after {
+			width: 80%;
+		}
+	}
+
+	&.router-link-active {
+		color: $amarillo;
+		font-weight: 700;
+		
+		&::after {
+			width: 80%;
+		}
+	}
   }
   
   ul {
@@ -147,12 +187,13 @@
 	  position: fixed;
 	  top: 0;
 	  right: -100%;
-	  width: 70%;
+	  width: 75%;
+	  max-width: 300px;
 	  height: 100vh;
 	  background: white;
-	  padding-top: 5rem;
+	  padding-top: 6rem;
 	  transition: right 0.3s ease;
-	  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+	  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
 	  z-index: 40;
   
 	  &.menu-open {
