@@ -84,22 +84,6 @@
 					>Selecciona tu pais</span
 				>
 			</div>
-			<!-- Estado -->
-			<div class="form-group" v-if="formData.pais === 'Mexico'">
-				<label for="estado">Estado</label>
-				<select v-model="formData.estado" id="estado">
-					<option
-						v-for="state in states"
-						:key="state.iso2"
-						:value="state.name"
-					>
-						{{ state.name }}
-					</option>
-				</select>
-				<span v-if="v$.nombre.$error" class="error-msg"
-					>Selecciona tu estado</span
-				>
-			</div>
 
 			<div class="form-group">
 				<label for="mensaje">Mensaje</label>
@@ -134,12 +118,10 @@ const formData = ref({
 	email: "",
 	telefono: "",
 	pais: "",
-	estado: "",
 	mensaje: "",
 });
 
 const countries = ref([]);
-const states = ref([]);
 const confirm = ref(null);
 const error = ref(null);
 
@@ -155,26 +137,26 @@ const fetchCountries = async () => {
 	}
 };
 
-const fetchStates = async () => {
-	if (formData.value.pais === "Mexico") {
-		try {
-			const response = await axios.get(
-				"https://api.countrystatecity.in/v1/countries/MX/states",
-				{
-					headers: {
-						"X-CSCAPI-KEY":
-							"RUFCampZSm5BVzROa2dzV2JOSlYzRlpwYjRHT3IwWFEwbTFhM29Icw==",
-					},
-				}
-			);
-			states.value = response.data;
-		} catch (error) {
-			console.error("Error fetching states:", error);
-		}
-	} else {
-		states.value = [];
-	}
-};
+// const fetchStates = async () => {
+// 	if (formData.value.pais === "Mexico") {
+// 		try {
+// 			const response = await axios.get(
+// 				"https://api.countrystatecity.in/v1/countries/MX/states",
+// 				{
+// 					headers: {
+// 						"X-CSCAPI-KEY":
+// 							"RUFCampZSm5BVzROa2dzV2JOSlYzRlpwYjRHT3IwWFEwbTFhM29Icw==",
+// 					},
+// 				}
+// 			);
+// 			states.value = response.data;
+// 		} catch (error) {
+// 			console.error("Error fetching states:", error);
+// 		}
+// 	} else {
+// 		states.value = [];
+// 	}
+// };
 
 //Reglas de validación
 const rules = {
