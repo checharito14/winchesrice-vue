@@ -197,8 +197,8 @@ const isLoading = ref(false);
 //En produccion las APIs son con api/
 const API_URL =
 	process.env.NODE_ENV === "production"
-		? "/api/send-email"
-		: "http://localhost:5173/api/send-email";
+		? "https://checharito14.app.n8n.cloud/webhook/formulario-contacto"
+		: "https://checharito14.app.n8n.cloud/webhook-test/formulario-contacto";
 
 const submitForm = async () => {
 	const result = await v$.value.$validate();
@@ -212,15 +212,18 @@ const submitForm = async () => {
 				},
 				body: JSON.stringify(formData.value),
 			});
+
+			console.log("Respuesta: ",response);
+
 			if (response.ok) {
 				confirm.value =
 					"Hemos recibido tu solicitud. Obtendrás una respuesta en breve";
 			} else {
-				console.log(response);
 				error.value = "Ocurrió un error al enviar el mensaje";
 			}
 		} catch (err) {
 			error.value = "Ocurrió un error en la conexión intentalo más tarde";
+			console.error(err);
 		} finally {
 			isLoading.value = false;
 			formData.value = {
